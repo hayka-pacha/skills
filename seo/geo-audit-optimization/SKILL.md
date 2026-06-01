@@ -296,3 +296,4 @@ Run this checklist on any website to assess GEO readiness:
 - 7-9 checked: Good foundation, optimize gaps
 - 4-6 checked: Needs significant GEO work
 - 0-3 checked: GEO blind spot — urgent action needed
+
