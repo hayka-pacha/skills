@@ -26,9 +26,9 @@ jobs:
             slug=$(basename $(dirname "$file"))
             git_url="https://github.com/${{ github.repository }}/tree/main/$(dirname "$file")"
             echo "Publishing $slug from $git_url"
-            curl -s -X PUT "https://api.smithery.ai/skills/hayka-pacha/$slug" \
+            response=$(curl -s -w "\n%{http_code}" -X PUT "https://registry.smithery.ai/skills/hayka-pacha/$slug" \
               -H "Content-Type: application/json" \
-              -H "Authorization: Bearer $SMITH" \
-              -d "{\"gitUrl\":\"$git_url\"}"
-            echo ""
+              -H "Authorization: Bearer $SMITHERY_API_KEY" \
+              -d "{\"gitUrl\":\"$git_url\"}")
+            echo "$response"
           done
