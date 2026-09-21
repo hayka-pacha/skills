@@ -4,14 +4,11 @@ Complete SEO audit & optimization skill for Claude Code. 60+ authoritative sourc
 
 ## Install
 
-```bash
-claude plugins install git@github.com:hayka-pacha/seo-growth-engine.git
-```
-
-Or manually:
+Part of the `hayka-pacha/skills` registry. Clone the registry, then symlink this skill in:
 
 ```bash
-git clone https://github.com/hayka-pacha/seo-growth-engine.git ~/.claude/skills/seo-growth-engine
+git clone git@github.com:hayka-pacha/skills.git
+ln -s "$(pwd)/skills/seo/seo-growth-engine" ~/.claude/skills/seo-growth-engine
 ```
 
 ## What it does
@@ -26,16 +23,28 @@ Runs a structured 7-phase SEO audit:
 6. **Conversion** — CTA placement, mobile-first, trust signals
 7. **Quick Wins & Monitoring** — GSC formula, monitoring cadence
 
-Produces a structured audit report with severity-ranked findings and a priority action plan.
+Reads only the reference(s) matching the user's actual situation — never all seven at once.
 
 ## Structure
 
 ```
 seo-growth-engine/
-├── SKILL.md              # Workflow (triggers on SEO-related prompts)
+├── SKILL.md                       # Workflow: which reference(s) to read, response shape, core thresholds
+├── scripts/
+│   └── audit.py                   # stdlib-only single-page technical SEO audit
+├── evals/
+│   └── evals.json                 # skill quality evals
 └── references/
-    ├── benchmarks.md     # CWV thresholds, schema tables, conversion benchmarks
-    └── sources.md        # 64-source bibliography
+    ├── phase-1-technical.md
+    ├── phase-2-content.md
+    ├── phase-3-international.md
+    ├── phase-4-programmatic.md
+    ├── phase-5-affiliate.md
+    ├── phase-6-conversion.md
+    ├── phase-7-monitoring.md
+    ├── pitfalls.md
+    ├── audit-script.md            # audit.py usage
+    └── sources.md                 # 60+ source bibliography
 ```
 
 ## Triggers

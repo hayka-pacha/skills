@@ -1,4 +1,6 @@
-# Sources (60+)
+# Sources
+
+60+ authoritative SEO sources. Cite from this list when making claims — it earns trust and lets the user verify.
 
 ## Google Official (18)
 
@@ -25,7 +27,7 @@
 
 19. Backlinko — 11.8M Google Results Study — backlinko.com/search-engine-ranking
 20. Ahrefs — On-Page SEO Guide — ahrefs.com/blog/on-page-seo
-21. Ahrefs — SEO Statistics — ahrefs.com/blog/seo-statistics (96.55% zero traffic stat)
+21. Ahrefs — SEO Statistics (96.55% zero traffic) — ahrefs.com/blog/seo-statistics
 22. Moz — Beginner's Guide to SEO — moz.com/beginners-guide-to-seo
 23. SEMrush — Ranking Factors Study — semrush.com/ranking-factors
 24. Search Engine Journal — Technical SEO Guide — searchenginejournal.com/technical-seo
@@ -37,7 +39,7 @@
 30. W3C WCAG — Accessibility Guidelines — w3.org/WAI/standards-guidelines/wcag
 31. HTTP Archive Web Almanac 2024 — SEO Chapter — almanac.httparchive.org/en/2024/seo
 32. Cloudflare Learning Center — cloudflare.com/learning
-33. Moz — DA (Domain Authority) — moz.com/learn/seo/domain-authority
+33. Moz — Domain Authority — moz.com/learn/seo/domain-authority
 34. Search Engine Journal — Site Architecture — searchenginejournal.com/site-architecture-seo
 35. Ahrefs — Content Gap Analysis — ahrefs.com/blog/content-gap-analysis
 36. Backlinko — CTR Study — backlinko.com/google-ctr-stats
@@ -46,13 +48,13 @@
 39. Screaming Frog — Log File Analysis — screamingfrog.co.uk/log-file-analyser
 40. web.dev — INP Guide — web.dev/articles/inp
 
-## Conversion & ROI (12)
+## Conversion & ROI (10)
 
 41. CXL Institute — Conversion Research — cxl.com/blog
 42. Unbounce Conversion Benchmark Report — unbounce.com/conversion-benchmark-report
 43. Nielsen Norman Group — UX Research — nngroup.com/articles
 44. Baymard Institute — Cart Abandonment — baymard.com/lists/cart-abandonment-rate
-45. Google HEART Framework — storage.googleapis.com/pub-tools-public-publication-data/pdf/36299.pdf
+45. Google HEART Framework
 46. HubSpot — Marketing Statistics — hubspot.com/marketing-statistics
 47. Deloitte — Speed & Conversion Study (100ms = +8.4%)
 48. QuintoAndar — INP Optimization Case Study (80% INP reduction → 36% conversion increase)
@@ -61,8 +63,7 @@
 
 ## Technical Deep Dives (14)
 
-51. Next.js SEO (Metadata API) — nextjs.org/docs/app/building-your-application/optimizing/metadata
-51b. Next.js JSON-LD Guide — nextjs.org/docs/app/guides/json-ld (use native `<script>`, not next/script)
+51. Next.js SEO — nextjs.org/docs/app/building-your-application/optimizing/metadata
 52. Vercel Edge Functions — vercel.com/docs/functions/edge-functions
 53. Next.js Image Optimization — nextjs.org/docs/app/api-reference/components/image
 54. Chrome DevTools Performance — developer.chrome.com/docs/devtools/performance

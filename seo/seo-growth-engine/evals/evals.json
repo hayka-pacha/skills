@@ -1,0 +1,26 @@
+{
+  "skill_name": "seo-growth-engine",
+  "evals": [
+    {
+      "id": 0,
+      "name": "traffic-drop-diagnosis",
+      "prompt": "ok so my Next.js affiliate site (about 12k pages, mostly programmatic — webcam model profiles with availability data + editorial reviews) lost about 40% of organic clicks over the last 3 weeks according to GSC. nothing technical changed on our end as far as i know. impressions are also down but not as much, and CTR is roughly the same. some category landing pages are still ranking fine, the bleed is mostly on the long-tail profile detail pages. where do i start looking? (also — yes the site has adult sections but they're clearly separated under /live/ with proper rating meta, the editorial /reviews/ section is general-audience)",
+      "expected_output": "A structured diagnostic process — manual actions check, algorithm update timing, page-level vs query-level analysis, before recommending fixes. Should NOT immediately jump to 'rewrite your titles' or generic checklist dumps. Should acknowledge the adult/general split and not panic about it.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "programmatic-scale-safety",
+      "prompt": "we're building a directory site — basically aggregating ~80,000 small business listings across France with hours, location, services, reviews scraped + enriched with editorial summaries. each page would be templated. boss wants to launch everything at once next month. is this going to get us slapped by Google's scaled-content thing from 2024? what's the safe way to do this if so",
+      "expected_output": "Reference to March 2024 core update / scaled content abuse policy. Should recommend progressive indexation (top 10K first, not all 80K at once), 500+ words unique content per page, dynamic editorial content not just variable swaps, real differentiation beyond templated data. Should also flag French localization (hreflang if multi-language, local keyword research).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "hreflang-setup",
+      "prompt": "I have a SaaS site at acme.com (English) and we just launched French and Spanish versions at acme.com/fr/ and acme.com/es/. our dev is implementing hreflang in the <head> of each page but only with the 'current' language tag and one alternate. seems wrong but i can't articulate why. can you sanity check what the implementation should actually look like? we have ~200 pages each locale.",
+      "expected_output": "Should explain that hreflang requires self-reference + ALL siblings + x-default on every page in the cluster. Should mention return-link requirement (Google ignores orphaned hreflang). Should give concrete <link> example. May suggest XML sitemap method for scale (~600 total pages is borderline).",
+      "files": []
+    }
+  ]
+}
