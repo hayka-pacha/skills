@@ -1,9 +1,15 @@
 ---
 name: cloudflare-cache-optimization
-description: Audit and optimize Cloudflare caching configuration for maximum cache hit ratio and minimum origin requests. Use this skill whenever the user mentions Cloudflare cache, CDN performance, cache hit ratio, origin shielding, Tiered Cache, Cache Rules, Cache Reserve, edge TTL, or wants to speed up a site behind Cloudflare. Also triggers on audit requests about page speed, TTFB, origin load reduction, or "cf-cache-status" for Cloudflare-proxied domains. Works for all CF setups: traditional origins, Cloudflare Pages, and Workers.
-version: 1.1.0
-platforms: [linux, macos, windows]
+description: >-
+  Audit and optimize Cloudflare caching configuration for maximum cache hit ratio and minimum
+  origin requests. Use this skill whenever the user mentions Cloudflare cache, CDN performance,
+  cache hit ratio, origin shielding, Tiered Cache, Cache Rules, Cache Reserve, edge TTL, or wants
+  to speed up a site behind Cloudflare. Also triggers on audit requests about page speed, TTFB,
+  origin load reduction, or "cf-cache-status" for Cloudflare-proxied domains. Works for all CF
+  setups: traditional origins, Cloudflare Pages, and Workers.
 metadata:
+  version: 1.1.0
+  platforms: [linux, macos, windows]
   hermes:
     tags: [cloudflare, cache, cdn, performance, seo, audit, origin-shielding, nextjs]
     related_skills: []
