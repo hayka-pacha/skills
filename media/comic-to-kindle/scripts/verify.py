@@ -6,8 +6,10 @@ Usage:
 
 Checks, per file:
   EPUB / KEPUB / CBZ  every page fits the device screen (rotated spreads allowed),
-                      no near-blank page, fixed-layout metadata present, reading direction
-                      right-to-left when --manga, page count >= source (--source), size <= --max-mb
+                      no more near-blank pages than the source (publishers leave a few white
+                      pages at the end of a volume; a broken build blanks most of them),
+                      fixed-layout metadata present, reading direction right-to-left when
+                      --manga, page count >= source (--source), size <= --max-mb
   MOBI                PalmDB "BOOKMOBI" signature, record count, non-trivial size
 
 Exit status 1 when any check fails. Pages are extracted to a temp directory whose path is
@@ -107,7 +109,40 @@ def count_source_pages(src):
     return None
 
 
-def check_zip(path, width, height, manga, max_mb, source_pages, keep):
+def count_source_blank(src):
+    """Near-blank images in the source archive or folder; None if it cannot be extracted or Pillow is missing."""
+    try:
+        from PIL import Image, ImageStat  # noqa: F401
+    except ImportError:
+        return None
+    tmp = None
+    root = src
+    if not os.path.isdir(src):
+        tmp = tempfile.mkdtemp(prefix="c2k-src-")
+        if zipfile.is_zipfile(src):
+            with zipfile.ZipFile(src) as z:
+                z.extractall(tmp)
+        elif shutil.which("tar") and subprocess.run(["tar", "-xf", src, "-C", tmp], capture_output=True).returncode == 0:
+            pass
+        elif shutil.which("7z") and subprocess.run(["7z", "x", "-y", f"-o{tmp}", src], capture_output=True).returncode == 0:
+            pass
+        else:
+            shutil.rmtree(tmp, ignore_errors=True)
+            return None
+        root = tmp
+    n = 0
+    for r, _, fs in os.walk(root):
+        for f in fs:
+            if f.lower().endswith(IMG_EXT):
+                m = mean_gray(os.path.join(r, f))
+                if m is not None and m > BLANK_MEAN:
+                    n += 1
+    if tmp:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return n
+
+
+def check_zip(path, width, height, manga, max_mb, source_pages, keep, source_blank=None):
     fails, notes = [], []
     size_mb = os.path.getsize(path) / 1e6
     tmp = tempfile.mkdtemp(prefix="c2k-verify-")
@@ -135,7 +170,18 @@ def check_zip(path, width, height, manga, max_mb, source_pages, keep):
     if too_big:
         fails.append(f"{len(too_big)} page(s) exceed {width}x{height}: {too_big[:3]}")
     if blank:
-        fails.append(f"{len(blank)} near-blank page(s): {blank[:5]}")
+        # Publishers leave a few white pages at the end of a volume; those are not a defect.
+        # A broken conversion blanks most pages. So: fail when the output has more blank pages
+        # than the source, or when more than 10% of pages are blank and no source was given.
+        if source_blank is not None:
+            if len(blank) > source_blank:
+                fails.append(f"{len(blank)} near-blank page(s) but only {source_blank} in the source: {blank[:5]}")
+            else:
+                notes.append(f"blank={len(blank)} (same in source)")
+        elif len(blank) > max(1, len(pages) // 10):
+            fails.append(f"{len(blank)} near-blank page(s), {100 * len(blank) // max(1, len(pages))}% of the book: {blank[:5]}")
+        else:
+            notes.append(f"blank={len(blank)} (pass --source to confirm they are the publisher's)")
     if unreadable:
         fails.append(f"{len(unreadable)} unreadable image(s): {unreadable[:3]}")
     if not images:
@@ -203,6 +249,7 @@ def main():
 
     width, height = PROFILES[a.profile]
     source_pages = count_source_pages(a.source) if a.source else None
+    source_blank = count_source_blank(a.source) if a.source else None
     if a.source and source_pages is None:
         print(f"note: could not count pages in {a.source}")
 
@@ -216,7 +263,7 @@ def main():
         if low.endswith(".mobi") or low.endswith(".azw3"):
             fails, notes = check_mobi(out)
         elif zipfile.is_zipfile(out):
-            fails, notes = check_zip(out, width, height, a.manga, a.max_mb, source_pages, a.keep)
+            fails, notes = check_zip(out, width, height, a.manga, a.max_mb, source_pages, a.keep, source_blank)
         else:
             fails, notes = ["unknown format (expected .epub/.kepub.epub/.cbz/.mobi)"], []
         status = "FAIL" if fails else "OK  "
