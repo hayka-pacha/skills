@@ -8,7 +8,7 @@ Part of the `hayka-pacha/skills` registry. Clone the registry, then symlink this
 
 ```bash
 git clone git@github.com:hayka-pacha/skills.git
-ln -s "$(pwd)/skills/media/comic-to-kindle" ~/.claude/skills/comic-to-kindle
+ln -s "$(pwd)/skills/ebooks/comic-to-kindle" ~/.claude/skills/comic-to-kindle
 ```
 
 Then, once, let the skill install its tools (or run it yourself):
