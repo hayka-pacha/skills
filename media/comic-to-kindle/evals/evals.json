@@ -1,0 +1,52 @@
+{
+  "skill_name": "comic-to-kindle",
+  "evals": [
+    {
+      "id": 0,
+      "name": "kindle-oasis-cbr-usb",
+      "prompt": "J'ai le tome 2 de mon manga en .cbr ici : ~/Comics/Series/Vol02.cbr. Convertis-le pour ma Kindle Oasis 10e génération, je le passerai par câble USB. Mets le résultat dans ~/Comics/Series/kindle/ et dis-moi ce que je dois faire ensuite.",
+      "expected_output": "A .mobi (plus an .epub) built with the KO profile (1264x1680), right-to-left reading, verified (page count vs source, no page over 1264x1680, no blank page, valid MOBI header). The reply names the .mobi for USB transfer into the Kindle's documents/ folder, states what was verified and that on-device rendering still needs a look.",
+      "files": [],
+      "expectations": [
+        "A .mobi file for the volume exists in the requested output directory and starts with the BOOKMOBI signature",
+        "Every page image in the produced EPUB fits within 1264x1680 (Kindle Oasis 2/3 profile), allowing rotated spreads",
+        "The produced EPUB declares right-to-left reading (primary-writing-mode horizontal-rl or page-progression-direction rtl)",
+        "No near-blank page (mean gray > 250) is present in the produced EPUB",
+        "The output page count is at least the number of images in the source .cbr",
+        "The final message tells the user to copy the .mobi into the Kindle's documents folder over USB",
+        "The transcript shows the output was verified (dimensions, blank pages or page count checked) before the assistant reported success"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "kobo-clara-cbz",
+      "prompt": "convert ~/Comics/Series/Vol14.cbz so it reads properly on my kobo clara hd. last time i just dropped the cbz on the kobo and the pages were tiny with huge white margins. put the result in ~/Comics/Series/kobo/",
+      "expected_output": "A .kepub.epub built with the KoC profile (1072x1448), fixed layout, verified. No MOBI produced. The reply explains the file goes onto the Kobo over USB as-is and why the kepub name matters.",
+      "files": [],
+      "expectations": [
+        "A .kepub.epub (or .epub) file for the volume exists in the requested output directory",
+        "Every page image in the produced file fits within 1072x1448 (Kobo Clara HD profile), allowing rotated spreads",
+        "The produced file declares fixed-layout metadata",
+        "No near-blank page (mean gray > 250) is present in the produced file",
+        "No .mobi file was produced for this Kobo request",
+        "The final message explains that the file is copied to the Kobo over USB without any conversion service",
+        "The transcript shows the output was verified before the assistant reported success"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "paperwhite-batch-send-to-kindle",
+      "prompt": "here are two volumes: ~/Comics/Series/Vol15.cbz and ~/Comics/Series/Vol16.cbz. i want them on my paperwhite (the 2021 one, 11th gen) through the send to kindle app. make sure they display right and tell me exactly what to do after. output in ~/Comics/Series/stk/",
+      "expected_output": "Two .epub files built with the KPW5 profile (1236x1648), each under 200 MB, verified. The reply says to send the .epub files (not MOBI) through Send to Kindle, mentions the size limit, and what was checked.",
+      "files": [],
+      "expectations": [
+        "Two EPUB files, one per volume, exist in the requested output directory",
+        "Each produced EPUB is under 200 MB",
+        "Every page image in both EPUBs fits within 1236x1648 (Kindle Paperwhite 5 profile), allowing rotated spreads",
+        "No near-blank page (mean gray > 250) is present in either EPUB",
+        "The final message instructs the user to send the .epub files through Send to Kindle and not a .mobi",
+        "Both volumes were verified in the transcript, not only the first one"
+      ]
+    }
+  ]
+}
