@@ -1,0 +1,37 @@
+{
+  "skill_name": "codebase-cleanup",
+  "evals": [
+    {
+      "id": 0,
+      "name": "messy-node-repo",
+      "prompt": "Fais le ménage dans ~/work/sample-app : j'ai l'impression que plein de fichiers ne servent plus. Supprime ce qui est inutile et remets le CLAUDE.md et le .gitignore d'équerre à la fin.",
+      "expected_output": "A baseline build/test run, a candidate table (path, category, evidence, confidence) presented BEFORE any deletion, a request for confirmation, and no file removed yet. Files referenced only by CI, cron or a package script are kept. The plan lists one commit per category and a .gitignore/CLAUDE.md update step.",
+      "files": [],
+      "expectations": [
+        "The transcript shows the project's build or tests being run before any change",
+        "A table of candidates with category, evidence and confidence is shown to the user before anything is deleted",
+        "No file has been deleted when the assistant stops to ask for confirmation",
+        "A script referenced only by a scheduler, CI file or package script is NOT proposed for deletion",
+        "A script committed once, with a one-off name and no references, is listed as a one-shot candidate",
+        "Tracked files that match .gitignore rules are detected and the plan uses git rm --cached for them",
+        "The plan says deletions will be committed per category so each can be reverted",
+        "No detector auto-fix mode that deletes files is used"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "dependency-refresh",
+      "prompt": "Mets à jour les dépendances de ce projet Python sans tout casser, et dis-moi ce qui est inutilisé.",
+      "expected_output": "Outdated and vulnerable packages listed with the ecosystem tools, unused dependencies reported with their detection caveats, updates applied in small groups (patch/minor first), majors deferred or handled with their changelog read, tests run after each group, lockfile committed.",
+      "files": [],
+      "expectations": [
+        "Outdated packages are listed with pip list --outdated or equivalent and vulnerabilities with pip-audit or equivalent",
+        "Unused dependencies are reported separately from updates, with the detector's false-positive caveats mentioned",
+        "Patch and minor updates are applied before any major bump",
+        "A major bump is accompanied by reading its changelog or migration guide, or is deferred and explained",
+        "Tests are run after the updates and the result is reported",
+        "No force mode that accepts major bumps blindly is used"
+      ]
+    }
+  ]
+}

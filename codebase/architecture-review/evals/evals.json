@@ -1,0 +1,34 @@
+{
+  "skill_name": "architecture-review",
+  "evals": [
+    {
+      "id": 0,
+      "name": "critical-review-small-pipeline",
+      "prompt": "Lis tout le code de ~/work/sample-pipeline et donne-moi un avis critique sur l'architecture : points de rupture, ce qui est dur à maintenir, gérer et monitorer, étapes inutiles dans la CI/CD, et comment réduire la fragmentation.",
+      "expected_output": "A report with verdict, verified strengths, ranked breaking points with path:line evidence, separate maintain/manage/monitor lists, workflow waste, a tiered plan with effort and tradeoffs, and open questions. No file modified.",
+      "files": [],
+      "expectations": [
+        "The report follows the verdict, what works, breaking points, hard-to-maintain/manage/monitor, workflow waste, plan, open questions structure",
+        "Findings cite concrete evidence such as file paths and line numbers",
+        "CI findings include missing timeouts, broad token permissions or unpinned third-party actions when they are present in the repo",
+        "Breaking points are ranked by severity and likelihood",
+        "Every recommendation states its cost or tradeoff",
+        "Things that could not be verified from the repo are said to be unverified",
+        "Recommendations favour removing moving parts over adding tooling",
+        "No file in the repository is modified"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "review-with-failing-ci",
+      "prompt": "Donne-moi ton avis critique sur ce projet. La CI plante souvent et je ne sais pas si c'est le code ou le setup.",
+      "expected_output": "An architecture opinion that hands the analysis of failing runs to the ci-failure-analysis approach instead of guessing causes, and separates code issues from pipeline issues.",
+      "files": [],
+      "expectations": [
+        "Failing runs are examined with run history or logs rather than speculated about",
+        "The assistant distinguishes problems in the code from problems in the pipeline setup",
+        "The report still covers architecture and not only the CI failures"
+      ]
+    }
+  ]
+}

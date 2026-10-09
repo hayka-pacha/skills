@@ -9,6 +9,12 @@ Open registry of reusable `SKILL.md` packages for Claude Code and other agents. 
 | `seo/` | [seo-growth-engine](seo/seo-growth-engine/) | Structured 7-phase SEO audit and fix plan, backed by 60+ sources |
 | `seo/` | [geo-audit-optimization](seo/geo-audit-optimization/) | Generative Engine Optimization: visibility and citations in ChatGPT, Perplexity and other AI answers |
 | `performance/` | [cloudflare-cache-optimization](performance/cloudflare-cache-optimization/) | Audit and tune the Cloudflare cache stack for hit ratio, TTFB and origin load |
+| `performance/` | [pipeline-throughput-analysis](performance/pipeline-throughput-analysis/) | Mine pipeline or bot logs for where time goes and how to meet a per-batch time budget |
+| `codebase/` | [codebase-cleanup](codebase/codebase-cleanup/) | Find debug, orphaned, dead and one-shot code and unused dependencies; delete only after confirmation |
+| `codebase/` | [fleet-drift-audit](codebase/fleet-drift-audit/) | Detect and classify drift between a template repo and the projects derived from it |
+| `codebase/` | [architecture-review](codebase/architecture-review/) | Critical, evidence-based architecture and CI/CD review with a prioritised plan |
+| `codebase/` | [docs-consolidation](codebase/docs-consolidation/) | One README, one product spec, docs verified against the code |
+| `ci-cd/` | [ci-failure-analysis](ci-cd/ci-failure-analysis/) | Root-cause CI/CD failures and recommend permanent fixes, not workarounds |
 | `ebooks/` | [comic-to-kindle](ebooks/comic-to-kindle/) | Convert CBZ/CBR/PDF comics for Kindle, Kobo or reMarkable with Kindle Comic Converter, then verify the output |
 
 ## Install a skill
@@ -34,7 +40,7 @@ Or install from Smithery: `https://smithery.ai/skills/hayka-pacha/<skill-name>`.
     └── evals/evals.json  # optional: test prompts and expectations
 ```
 
-Domains are plain words describing the problem area (`seo`, `performance`, `ebooks`). Add a new one when no existing domain fits; do not use generic buckets.
+Domains are plain words describing the problem area (`seo`, `performance`, `ebooks`, `codebase`, `ci-cd`). Add a new one when no existing domain fits; do not use generic buckets.
 
 ## Publishing
 

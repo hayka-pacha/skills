@@ -1,0 +1,34 @@
+{
+  "skill_name": "pipeline-throughput-analysis",
+  "evals": [
+    {
+      "id": 0,
+      "name": "logs-to-budget",
+      "prompt": "Voici les logs de mon bot dans ~/work/sample-bot/logs/. Chaque lot doit tenir en moins de 20 minutes. Dis-moi où part le temps, si je tourne aux bonnes heures, et comment passer sous le budget.",
+      "expected_output": "A CSV built from the logs, the analysis script run with a 20-minute budget, a table of where time goes using percentiles, a cautious verdict on time windows with sample-size caveats, waste found in the code with quantified impact, ranked changes with expected minutes saved, and a plan to re-measure.",
+      "files": [],
+      "expectations": [
+        "Timings are extracted into a table with group, unit, start, duration and status",
+        "scripts/analyze_durations.py (or equivalent) is run with the 20-minute budget",
+        "Percentiles are reported, not only averages",
+        "The verdict on best time of day mentions sample size and confounders, and does not claim off-peak is faster without data",
+        "At least one concrete waste pattern (fixed sleep, retry without backoff, serial work, repeated setup) is tied to a code location and a number",
+        "Recommendations are ranked with expected minutes saved and effort",
+        "No recommendation involves evading rate limits or bot protection",
+        "A before/after re-measurement is proposed as the success check"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "logs-without-timings",
+      "prompt": "Mon script traite des milliers d'éléments par lot mais je ne sais pas combien de temps ça prend par élément, les logs sont juste des lignes de texte sans horodatage. Aide-moi à l'accélérer.",
+      "expected_output": "The assistant states that the lack of measurement is the first finding, proposes structured per-unit log lines, and gives interim approximate guidance without inventing numbers.",
+      "files": [],
+      "expectations": [
+        "Missing timestamps or durations are named as the first finding",
+        "A structured log format with timestamp, group id, unit id, status and duration is proposed",
+        "No performance numbers are invented"
+      ]
+    }
+  ]
+}

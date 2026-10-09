@@ -1,0 +1,33 @@
+{
+  "skill_name": "ci-failure-analysis",
+  "evals": [
+    {
+      "id": 0,
+      "name": "recurring-red-pipeline",
+      "prompt": "Mon workflow GitHub Actions plante une fois sur trois et je relance jusqu'à ce que ça passe. Analyse les erreurs et dis-moi comment les éviter pour de bon, pas avec un contournement.",
+      "expected_output": "Run history summarised and ranked by wasted minutes, failures classified into root-cause categories with log evidence, quick fixes explicitly rejected, concrete permanent fixes with prevention, and owners/effort.",
+      "files": [],
+      "expectations": [
+        "Run history is collected (gh run list or provided data) and ranked by time wasted by failures",
+        "Each failure class is tied to evidence from a log or run",
+        "Flaky behaviour (passes on retry, same commit passes and fails) is distinguished from environment drift and from regressions",
+        "Re-running until green, continue-on-error, added sleeps and raised timeouts are rejected as fixes",
+        "Each permanent fix is concrete (file, key, value) and states its cost",
+        "A prevention step is proposed (workflow linting, pinned versions or required check)"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "pasted-permission-error",
+      "prompt": "Ma CI vient d'échouer avec ça : 'Resource not accessible by integration' sur l'étape qui poste un commentaire sur la PR. Je mets permissions: write-all et c'est réglé non ?",
+      "expected_output": "The assistant explains why write-all is a workaround, identifies the one permission the step needs, scopes it to the job, and notes the fork-PR limitation.",
+      "files": [],
+      "expectations": [
+        "write-all is not recommended; the specific permission needed (for example pull-requests: write) is named",
+        "The permission is scoped to the job that needs it, with the rest read-only",
+        "The fork pull request case (read-only token, no secrets) is mentioned",
+        "The pasted error is classified as a permissions/token problem"
+      ]
+    }
+  ]
+}
