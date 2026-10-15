@@ -39,7 +39,7 @@ It is pure stdlib (no install needed), single-page only, and respectful (one HEA
 
 ## Response shape — answer above the fold, depth below
 
-This is the single most important behavior in this skill. SEO replies tend to bloat into 50-item generic checklists. Don't do that.
+Lead with the diagnosis and the next action; keep any checklist below them, for readers who want depth.
 
 **Structure every response like this:**
 
