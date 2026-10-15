@@ -11,7 +11,6 @@ Open registry of reusable `SKILL.md` packages for Claude Code and other agents. 
 | `performance/` | [cloudflare-cache-optimization](performance/cloudflare-cache-optimization/) | Audit and tune the Cloudflare cache stack for hit ratio, TTFB and origin load |
 | `performance/` | [pipeline-throughput-analysis](performance/pipeline-throughput-analysis/) | Mine pipeline or bot logs for where time goes and how to meet a per-batch time budget |
 | `codebase/` | [codebase-cleanup](codebase/codebase-cleanup/) | Find debug, orphaned, dead and one-shot code and unused dependencies; delete only after confirmation |
-| `codebase/` | [fleet-drift-audit](codebase/fleet-drift-audit/) | Detect and classify drift between a template repo and the projects derived from it |
 | `codebase/` | [architecture-review](codebase/architecture-review/) | Critical, evidence-based architecture and CI/CD review with a prioritised plan |
 | `codebase/` | [docs-consolidation](codebase/docs-consolidation/) | One README, one product spec, docs verified against the code |
 | `ci-cd/` | [ci-failure-analysis](ci-cd/ci-failure-analysis/) | Root-cause CI/CD failures and recommend permanent fixes, not workarounds |
