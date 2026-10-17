@@ -8,6 +8,7 @@ Open registry of reusable `SKILL.md` packages for Claude Code and other agents. 
 |---|---|---|
 | `seo/` | [seo-growth-engine](seo/seo-growth-engine/) | Structured 7-phase SEO audit and fix plan, backed by 60+ sources |
 | `seo/` | [geo-audit-optimization](seo/geo-audit-optimization/) | Generative Engine Optimization: visibility and citations in ChatGPT, Perplexity and other AI answers |
+| `seo/` | [geo-affiliation](seo/geo-affiliation/) | GEO for affiliate publishers: audit cited pages, improve comparisons and measure referrals |
 | `performance/` | [cloudflare-cache-optimization](performance/cloudflare-cache-optimization/) | Audit and tune the Cloudflare cache stack for hit ratio, TTFB and origin load |
 | `performance/` | [pipeline-throughput-analysis](performance/pipeline-throughput-analysis/) | Mine pipeline or bot logs for where time goes and how to meet a per-batch time budget |
 | `codebase/` | [codebase-cleanup](codebase/codebase-cleanup/) | Find debug, orphaned, dead and one-shot code and unused dependencies; delete only after confirmation |
