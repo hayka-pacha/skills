@@ -16,6 +16,7 @@ Open registry of reusable `SKILL.md` packages for Claude Code and other agents. 
 | `codebase/` | [docs-consolidation](codebase/docs-consolidation/) | One README, one product spec, docs verified against the code |
 | `ci-cd/` | [ci-failure-analysis](ci-cd/ci-failure-analysis/) | Root-cause CI/CD failures and recommend permanent fixes, not workarounds |
 | `ebooks/` | [comic-to-kindle](ebooks/comic-to-kindle/) | Convert CBZ/CBR/PDF comics for Kindle, Kobo or reMarkable with Kindle Comic Converter, then verify the output |
+| `youtube/` | [affiliation-facile-youtube-storytelling](youtube/affiliation-facile-youtube-storytelling/) | Scripts originaux YouTube pour débutants en affiliation, avec preuves et transparence commerciale |
 
 ## Install a skill
 
